@@ -5,10 +5,12 @@ resource "newrelic_notification_channel" "team_email_channel" {
   product = "IINT"
 property {
     key = "subject"
-    value = "{{priority}} -[{{state}}] {{accumulations.metadata_entity_name}} - [{{issueTitle}}]"
+    value = "[{{state}}] - {{priority}} - [{{issueTitle}}]" 
   }
   property {
     key = "customDetailsEmail"
-   value = " [IsAcknowledged: {{isAcknowledged}}] [Acknowledged By {{acknowledgedBy}}] [Issue Closed By:{{closedBy}}] [ViolationClosedCause:{{accumulations.violationClosedCause}}]"
+    value =  "1. IsAcknowledged: {{isAcknowledged}} \n 2. Acknowledged By: {{acknowledgedBy}} \n 3. Issue Closed By: {{closedBy}} \n 4. ViolationClosedCause: {{accumulations.violationClosedCause}} \n"
+  
   }
 }
+
